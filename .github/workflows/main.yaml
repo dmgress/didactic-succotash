@@ -1,0 +1,17 @@
+name: Create a new commit on push to main
+on:
+  push:
+
+jobs:
+  push-commit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: And push ...
+        run: |
+          DATE_NOW="$(date)"
+          echo "${DATE_NOW}" > date.txt
+          git add date.txt
+          git commit -m "Aaaanddd pushh... ${DATE_NOW}"
+          git push origin/HEAD
