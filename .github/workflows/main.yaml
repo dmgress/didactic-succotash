@@ -1,6 +1,8 @@
 name: Create a new commit on push to main
 on:
   push:
+    branches:
+      - main
 
 jobs:
   push-commit:
@@ -18,4 +20,4 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add date.txt
           git commit -m "Aaaanddd pushh... ${DATE_NOW}"
-          git push origin/HEAD
+          git push origin HEAD:${{ github.ref_name }}
